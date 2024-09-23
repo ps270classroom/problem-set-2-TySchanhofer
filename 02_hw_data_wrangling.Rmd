@@ -1,6 +1,6 @@
 ---
 title: "Problem Set 2: Data Wrangling"
-author: Your Name Here
+author: Ty Schanhofer
 output: pdf_document
 ---
 
@@ -44,6 +44,11 @@ Use `dplyr` functions to create a table with the number of candidates in each ty
  **Rubric**: 2pt for loading the data (autograder); 1pt for describing the number of candidates (PDF); 3pts for creating the table (autograder); 2pt for using `kable()` to nicely format the output (PDF)
 
 ## Answer 1
+```{r}
+library(dplyr)
+read.csv()
+
+```
 
 
 
