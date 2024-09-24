@@ -50,13 +50,14 @@ Use `dplyr` functions to create a table with the number of candidates in each ty
 ```{r}
 fb_ads <-
   read_csv("data/fb_ads.csv")
-fb_ads |>
-  select(impressions)
+incumbency_table <-
+  fb_ads %>% count(incumbency, sort = TRUE)
 
-
+incumbency_table
 ```
+There are 7,014 candidates.
 
-list.files("Users/Desktop/PS270/problem_set_2/data/fb_ads.csv")
+
 
 \newpage
 
