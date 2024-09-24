@@ -7,6 +7,9 @@ output: pdf_document
 
 ```{r setup, include = FALSE}
 options(width = 100)
+library(dplyr)
+library(readr)
+library(knitr)
 ```
 
 ## Background
@@ -45,12 +48,15 @@ Use `dplyr` functions to create a table with the number of candidates in each ty
 
 ## Answer 1
 ```{r}
-library(dplyr)
-read.csv()
+fb_ads <-
+  read_csv("data/fb_ads.csv")
+fb_ads |>
+  select(impressions)
+
 
 ```
 
-
+list.files("Users/Desktop/PS270/problem_set_2/data/fb_ads.csv")
 
 \newpage
 
