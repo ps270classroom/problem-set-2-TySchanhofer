@@ -53,7 +53,7 @@ fb_ads <-
 incumbency_table <-
   fb_ads %>% count(incumbency, sort = TRUE)
 
-incumbency_table
+knitr::kable(incumbency_table)
 ```
 There are 7,014 candidates.
 
