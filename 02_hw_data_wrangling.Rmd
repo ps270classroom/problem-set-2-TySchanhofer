@@ -4,7 +4,6 @@ author: Ty Schanhofer
 output: pdf_document
 ---
 
-
 ```{r setup, include = FALSE}
 options(width = 100)
 library(dplyr)
@@ -12,6 +11,7 @@ library(readr)
 library(knitr)
 library(tidyverse)
 ```
+
 
 ## Background
 
@@ -68,6 +68,7 @@ Filter the data to just US House and US Senate races and use this to create a ti
 
 Use `knitr::kable()` to produce a nicely formatted table. In this call, set the `digits` arguments to 3 and use the `col.names` argument to pass a nicer set of names. You can use the following as a template:
 
+
 ```{r}
 party_incumbent_promote <- fb_ads |> 
   filter(office %in% c("US Senate", "US House")) |>
@@ -77,14 +78,12 @@ party_incumbent_promote <- fb_ads |>
 
 party_incumbent_promote
 
+knitr::kable(party_incumbent_promote, col.names = c("Party    |", "| Incumbency Status   |", "| Self-Promotion Ad Proportion"))
+
 ```
 
-```{r eval = FALSE}
-knitr::kable(my_table, col.names = c("Variable 1", "Variable 2", ...))
-```
 
-US_Congress <- fb_ads |> 
-  filter(office %in% c("US Senate", "US House")),
+
   
   
 In the writeup, describe which type of candidate sponsored the most promoting ads on average. 
@@ -93,7 +92,7 @@ In the writeup, describe which type of candidate sponsored the most promoting ad
 
 ## Answer 2
 
-
+The candidates that sponsor the most promoting ads on FB are Democratic incumbent candidates (85.4%).
 
 \newpage
 
@@ -103,6 +102,18 @@ In the writeup, describe which type of candidate sponsored the most promoting ad
 Create a new variable called `impressions_millions` that is the total Facebook ad impressions in millions (as opposed to single impressions). Make sure to save the resulting dataset back as `fb_ads`.
 
 Create a histogram of this variable for just the US House races. Save the ggplot output as `plot_q3` and also print it to produce a plot in the output. In the text, describe the shape of the histogram and tell the reader if most of the House candidates had more than 10 million ads impressions on Facebook. 
+
+```{r}
+impression_millions <- fb_ads |>
+  mutate(sum(impressions) / 1000000)
+
+impression_millions
+```
+
+
+
+
+
 
  **Rubric:** 2pt for creating the new variable (autograder); 3pts for creating the histogram object (autograder); 2pts for answering the question about the histogram (PDF)
 
