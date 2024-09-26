@@ -109,10 +109,15 @@ fb_ads <- fb_ads |>
 
 
 
-plot_q3 <- ggplot(data = fb_ads,
-                  filter = "US House",
+
+
+fb_ads_2 <- fb_ads %>%
+  filter(office == "US House")
+
+plot_q3 <- ggplot(data = fb_ads_2, 
                   mapping = aes(x = impressions_millions)) +
-                    geom_histogram()
+  geom_histogram(binwidth = 1)
+
 
 plot_q3
 
