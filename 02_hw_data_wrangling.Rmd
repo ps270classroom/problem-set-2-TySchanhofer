@@ -52,7 +52,8 @@ Use `dplyr` functions to create a table with the number of candidates in each ty
 fb_ads <-
   read_csv("data/fb_ads.csv")
 incumbency_table <-
-  fb_ads %>% count(incumbency, sort = TRUE)
+  fb_ads |>
+  count(incumbency, sort = TRUE)
 
 knitr::kable(incumbency_table)
 ```
@@ -111,12 +112,12 @@ fb_ads <- fb_ads |>
 
 
 
-fb_ads_2 <- fb_ads %>%
+fb_ads |>
   filter(office == "US House")
 
-plot_q3 <- ggplot(data = fb_ads_2, 
+plot_q3 <- ggplot(data = fb_ads, 
                   mapping = aes(x = impressions_millions)) +
-  geom_histogram(binwidth = 1)
+  geom_histogram()
 
 
 plot_q3
@@ -129,7 +130,7 @@ plot_q3
 
 ## Answer 3
 
-
+Most of the candidates had less than 10 million impressions on FB.
 
 \newpage
 
@@ -156,10 +157,24 @@ LECTURE 5
 
 \newpage
 
+```{r}
+fb_top_plot <- fb_ads |>
+  filter(office == "US House") |>
+  arrange(desc(impressions_millions)) |>
+  slice_max(order_by = impressions_millions, n = 15)
+
+fb_top_plot <- ggplot(fb_top_plot, aes(x = impressions_millions,
+                                       y = fct_reorder(cand_name_last, impressions_millions),
+                                       fill = party)) +
+  geom_col() +
+  scale_fill_manual(values = c(R = "red", D = "blue"))
+
+fb_top_plot
+```
 
 
 # Code
 
-```{r print-code, ref.label=knitr::all_labels(), echo = TRUE, eval=FALSE}
+```{r}
 
 ```
