@@ -104,14 +104,11 @@ Create a new variable called `impressions_millions` that is the total Facebook a
 Create a histogram of this variable for just the US House races. Save the ggplot output as `plot_q3` and also print it to produce a plot in the output. In the text, describe the shape of the histogram and tell the reader if most of the House candidates had more than 10 million ads impressions on Facebook. 
 
 ```{r}
-impression_millions <- fb_ads |>
-  mutate(impressions / 1000000)
+fb_ads <- fb_ads |>
+  mutate(impression_millions = impressions / 1000000)
 
-impression_millions
+fb_ads
 ```
-
-
-
 
 
 
