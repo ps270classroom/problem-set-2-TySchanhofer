@@ -107,13 +107,17 @@ Create a histogram of this variable for just the US House races. Save the ggplot
 fb_ads <- fb_ads |>
   mutate(impressions_millions = impressions / 1000000)
 
-fb_ads
+
+
+plot_q3 <- ggplot(data = fb_ads,
+                  filter = "US House",
+                  mapping = aes(x = impressions_millions)) +
+                    geom_histogram()
+
+plot_q3
 
 ```
 
-```{r}
-plot_q3 <- fb_ads |>
-```
 
 
  **Rubric:** 2pt for creating the new variable (autograder); 3pts for creating the histogram object (autograder); 2pts for answering the question about the histogram (PDF)
@@ -143,7 +147,7 @@ You do not need to exactly match the labels, but you should have informative lab
 
 ## Answer 4
 
-
+LECTURE 5
 
 \newpage
 
