@@ -112,7 +112,7 @@ fb_ads <- fb_ads |>
 
 
 
-fb_ads |>
+fb_ads <- fb_ads |>
   filter(office == "US House")
 
 plot_q3 <- ggplot(data = fb_ads, 
