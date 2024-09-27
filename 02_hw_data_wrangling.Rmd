@@ -153,7 +153,6 @@ You do not need to exactly match the labels, but you should have informative lab
 
 ## Answer 4
 
-LECTURE 5
 
 \newpage
 
@@ -165,9 +164,10 @@ fb_top_plot <- fb_ads |>
   slice_max(order_by = impressions_millions, n = 15)
 
 fb_top_plot <- ggplot(fb_top_plot, aes(x = impressions_millions,
-                                       y = fct_reorder(cand_name_last, impressions_millions),
-                                       fill = party)) +
-  geom_col() +
+                                       y = fct_reorder(cand_name_last, impressions_millions))) +
+                                       
+
+  geom_col(aes(fill = party)) +
   scale_fill_manual(values = c(R = "red", D = "blue")) +
   labs(title = "Top House Candidates by FB Ad Impressions",
        x = "FB Ad Impressions (millions)",
